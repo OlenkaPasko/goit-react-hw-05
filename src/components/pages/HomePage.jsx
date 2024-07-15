@@ -16,7 +16,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Запит</h1>
+      <h1>Trending today</h1>
       <ul>
         {trendingMovies.map((movie) => (
           <li key={movie.id}>{movie.title || movie.name}</li>
