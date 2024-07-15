@@ -13,11 +13,7 @@ export default function MoviesPage() {
     setError(false);
     try {
       const response = await searchMovies(newTopic);
-      if (response) {
-        setSearchResult(response.results);
-      } else {
-        setError(true);
-      }
+      setSearchResult(response.results);
     } catch (error) {
       setError(true);
     } finally {
