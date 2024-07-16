@@ -4,6 +4,8 @@ import HomePage from "../pages/HomePage";
 import MoviesPage from "../pages/MoviesPage";
 import Navigation from "../Navigation/NavLink";
 
+import MovieDetailsPage from "../pages/MovieDetailsPage";
+
 
 
 export default function App() {
@@ -13,7 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
-        <Route />
+        <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
         <Route />
         <Route />
       </Routes>

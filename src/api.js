@@ -3,7 +3,7 @@ import axios from "axios";
 const API_KEY = "9cbb52e6579c256183b59d31049fbf06";
 const BASE_URL = "https://api.themoviedb.org/3";
 const TREND_URL = `${BASE_URL}/trending/all/day`;
-const DETAIL_URL = `${BASE_URL}/movie/`;
+
 
 const options = {
   headers: {
@@ -28,6 +28,17 @@ export async function searchMovies(query) {
     return response.data;
   } catch (error) {
     console.error("Error fetching movies:", error);
+    return null;
+  }
+}
+
+export async function getMovieDetails(movie_id) {
+  try {
+    const url = `${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}&language=en-US`;
+    const response = await axios.get(url, options);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie details:", error);
     return null;
   }
 }
