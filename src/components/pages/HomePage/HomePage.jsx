@@ -26,15 +26,16 @@ export default function HomePage() {
   return (
     <div>
       <h1>Trending today</h1>
-      <nav className={css.nav}>
-        <ul>
-          {trendingMovies.map((movie) => (
-            <NavLink to="/movies" className={makeNavLinkClass} key={movie.id}>
+
+      <ul className={css.list}>
+        {trendingMovies.map((movie) => (
+          <li key={movie.id}>
+            <NavLink to={`/movies/${movie.id}`} className={makeNavLinkClass}>
               {movie.title || movie.name}
             </NavLink>
-          ))}
-        </ul>
-      </nav>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
