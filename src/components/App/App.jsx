@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 
-import HomePage from "../pages/HomePage";
+import HomePage from "../pages/HomePage/HomePage";
 import MoviesPage from "../pages/MoviesPage";
 import Navigation from "../Navigation/NavLink";
 
-import MovieDetailsPage from "../pages/MovieDetailsPage";
+import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage";
 
 
 

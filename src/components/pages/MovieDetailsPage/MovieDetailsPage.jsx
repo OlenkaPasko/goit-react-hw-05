@@ -1,5 +1,5 @@
 import { useEffect, useState, useParams, useLocation } from "react";
-import { getMovieDetails } from "../../api";
+import { getMovieDetails } from "../../../api";
 
 
 export default function MoviDetailsPage() {
@@ -40,5 +40,22 @@ export default function MoviDetailsPage() {
       fetchMoviDetailsPage();
     }, [movieId]);
 
-    return <div>MoviDetailsPage</div>;
+    return (
+      <div>
+        <h1>MoviDetailsPage</h1>
+
+            <SectionMovieDetails><img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={name || title} width="120px">
+            </img></SectionMovieDetails>
+        <p>Additional Information</p>
+        <ul>
+          <li>
+            <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+          </li>
+          <li>
+            <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+    );
 }
