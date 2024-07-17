@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { searchMovies } from "../../api";
 
+
 export default function MoviesPage() {
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);

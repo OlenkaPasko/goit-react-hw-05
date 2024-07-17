@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getMovieDetails } from "../../../api";
 
+
+
 export default function MoviDetailsPage() {
   const { movieId } = useParams();
 
@@ -51,7 +53,9 @@ const {
   return (
     <div>
       <h1>MoviDetailsPage</h1>
-
+      <Link to={location.state?.from ?? "/"}>
+        <button>Go back</button>
+      </Link>
       <div>
         {poster_path ? (
           <img
@@ -86,8 +90,9 @@ const {
         <li>
           <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
         </li>
-        <li></li>
+       
       </ul>
+      <></>
     </div>
   );
 }
