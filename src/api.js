@@ -52,3 +52,17 @@ export async function getMovieCast(movie_id) {
     return null;
   }
 }
+//-url 'https://api.themoviedb.org/3/movie/movie_id/reviews?language=en-US&page=1' \
+
+
+export async function getMovieReviews() {
+  try {
+    const url = `${BASE_URL}/movie/${movie_id}/reviews?api_key=${API_KEY}&language=en-US`;
+    const response = await axios.get(url, options);
+    return response.data;
+
+  } catch (error) {
+    console.error("Error fetching movie reviews:", error);
+   return null; 
+  }
+}
