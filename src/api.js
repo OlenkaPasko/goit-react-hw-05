@@ -4,7 +4,6 @@ const API_KEY = "9cbb52e6579c256183b59d31049fbf06";
 const BASE_URL = "https://api.themoviedb.org/3";
 const TREND_URL = `${BASE_URL}/trending/all/day`;
 
-
 const options = {
   headers: {
     Authorization:
@@ -39,6 +38,17 @@ export async function getMovieDetails(movie_id) {
     return response.data;
   } catch (error) {
     console.error("Error fetching movie details:", error);
+    return null;
+  }
+}
+
+export async function getMovieCast(movie_id) {
+  try {
+    const url = `${BASE_URL}/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`;
+    const response = await axios.get(url, options);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie cast:", error);
     return null;
   }
 }
