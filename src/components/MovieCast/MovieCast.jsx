@@ -38,7 +38,7 @@ export default function MovieCast() {
     return <p>No cast information available.</p>; 
   }
 
-  //const { character, name, profile_path, id } = castList;
+  const { character, name, profile_path, id } = castList;
   return (
     <div>
       {castList.map((actor) => (
