@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getMovieCast } from "../../api";
 
 export default function MovieCast() {
-const { movieId } = useParams();
+  const { movieId } = useParams();
   const [castList, setCastList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -34,10 +34,11 @@ const { movieId } = useParams();
     return <p>Error loading cast list.</p>;
   }
 
-  if (!castList) {
-    return null;
+  if (!castList || castList.length === 0) {
+    return <p>No cast information available.</p>; 
   }
-  const { character, name, profile_path, id } = castList;
+
+  //const { character, name, profile_path, id } = castList;
   return (
     <div>
       {castList.map((actor) => (
