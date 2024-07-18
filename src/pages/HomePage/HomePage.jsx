@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getTrending } from "../../api";
-
 import clsx from "clsx";
-import css from "./HomePage.module.css"
+import css from "./HomePage.module.css";
 
 const makeNavLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
-
 
 export default function HomePage() {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -39,5 +37,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-

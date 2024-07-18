@@ -8,8 +8,6 @@ export default function MovieCast() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  //HTTp запит
-
   useEffect(() => {
     async function fetchMovieCast() {
       try {
@@ -35,10 +33,9 @@ export default function MovieCast() {
   }
 
   if (!castList || castList.length === 0) {
-    return <p>No cast information available.</p>; 
+    return <p>No information about cast</p>;
   }
 
-  const { character, name, profile_path, id } = castList;
   return (
     <div>
       {castList.map((actor) => (

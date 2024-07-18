@@ -2,17 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getMovieDetails } from "../../api";
 
-
-
 export default function MoviDetailsPage() {
   const { movieId } = useParams();
 
   const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  //const location = useLocation();
 
-  //HTTP запит
   useEffect(() => {
     async function fetchMoviDetailsPage() {
       try {
@@ -40,22 +36,21 @@ export default function MoviDetailsPage() {
   if (!details) {
     return null;
   }
-const {
-  title,
-  name,
-  release_date,
-  vote_average,
-  overview,
-  poster_path,
-  genres,
-} = details;
+
+  const {
+    title,
+    name,
+    release_date,
+    vote_average,
+    overview,
+    poster_path,
+    genres,
+  } = details;
 
   return (
     <div>
       <h1>MoviDetailsPage</h1>
-      <Link to={location.state?.from ?? "/"}>
-        <button>Go back</button>
-      </Link>
+
       <div>
         {poster_path ? (
           <img
@@ -72,14 +67,19 @@ const {
         )}
         <div>
           <h1>
-            {title || name} &#40;{new Date(release_date).getFullYear()}&#41;
+            {title || name} &#40;
+            {release_date ? new Date(release_date).getFullYear() : "N/A"}&#41;
           </h1>
 
           <p>Rating: {vote_average}</p>
           <h2>Overview </h2>
           <p>{overview}</p>
           <h3>Genres</h3>
-          <p>{genres.map((genre) => genre.name).join(", ")}</p>
+          <p>
+            {genres && genres.length > 0
+              ? genres.map((genre) => genre.name).join(", ")
+              : "N/A"}
+          </p>
         </div>
       </div>
       <p>Additional Information</p>
@@ -90,9 +90,7 @@ const {
         <li>
           <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
         </li>
-       
       </ul>
-      <></>
     </div>
   );
 }
