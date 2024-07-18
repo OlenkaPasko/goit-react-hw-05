@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { getTrending } from "../../../api";
+import { getTrending } from "../../api";
 
 import clsx from "clsx";
 import css from "./HomePage.module.css"

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
-import { searchMovies } from "../../api";
+import { searchMovies } from "../api";
 
 
 export default function MoviesPage() {
