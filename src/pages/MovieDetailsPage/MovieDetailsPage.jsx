@@ -52,6 +52,9 @@ export default function MoviDetailsPage() {
       <h1>MoviDetailsPage</h1>
 
       <div>
+        <Link to={location.state?.from ?? "/"}>
+          <button>Go back</button>
+        </Link>
         {poster_path ? (
           <img
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
