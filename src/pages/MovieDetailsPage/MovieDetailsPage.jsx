@@ -49,8 +49,6 @@ export default function MoviDetailsPage() {
 
   return (
     <div>
-      <h1>MoviDetailsPage</h1>
-
       <div>
         <Link to={location.state?.from ?? "/"}>
           <button>Go back</button>
