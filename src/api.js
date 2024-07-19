@@ -16,12 +16,12 @@ export async function getTrending() {
 }
 
 export async function searchMovies(query) {
-  const response = await axios.get(`search/movie/?&query=${query}`);
+  const response = await axios.get(`/search/movie?&query=${query}`);
   return response.data;
 }
 
 export async function getMovieDetails(movie_id) {
-  const response = await axios.get(`movie/${movie_id}`);
+  const response = await axios.get(`/movie/${movie_id}`);
   return response.data;
 }
 
@@ -31,6 +31,6 @@ export async function getMovieCast(movie_id) {
 }
 
 export async function getMovieReviews(movie_id) {
-  const response = await axios.get(`/movie/${movie_id}/revies`);
+  const response = await axios.get(`/movie/${movie_id}/reviews`);
   return response.data;
 }

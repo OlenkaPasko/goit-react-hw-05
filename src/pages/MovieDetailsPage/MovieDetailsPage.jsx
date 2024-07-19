@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Suspense, useEffect, useState } from "react";
+import { useParams, Link, Outlet } from "react-router-dom";
 import { getMovieDetails } from "../../api";
 
 export default function MoviDetailsPage() {
@@ -85,12 +85,15 @@ export default function MoviDetailsPage() {
       <p>Additional Information</p>
       <ul>
         <li>
-          <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+          <Link to={`cast`}>Cast</Link>
         </li>
         <li>
-          <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+          <Link to={`reviews`}>Reviews</Link>
         </li>
       </ul>
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }
