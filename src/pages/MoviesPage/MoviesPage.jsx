@@ -1,67 +1,57 @@
-import React, { useState } from "react";
-import { Link, useLocation,Outlet } from "react-router-dom";
-import { Formik, Form, Field } from "formik";
+import React, { useState, useEffect } from "react";
+import { useSearchParams, Outlet } from "react-router-dom";
 import { searchMovies } from "../../api";
 
-//import clsx from "clsx";
-//import css from "./MoviesPage.module.css"
-
+import MovieList from "../../components/MovieList/MovieList";
 
 export default function MoviesPage() {
-  const [searchResult, setSearchResult] = useState([]);
-
+  const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  // HTTP запит
-  const handleSearch = async (newTopic) => {
-    setLoading(true);
-    setError(false);
-    try {
-      const response = await searchMovies(newTopic);
-      setSearchResult(response.results);
-    } catch (error) {
-      setError(true);
-    } finally {
-      setLoading(false);
+  const query = searchParams.get("query") || "";
+  
+  useEffect(() => {
+    if (query) {
+      async function fetchSearchMovies() {
+        setLoading(true);
+        setError(false);
+        try {
+          const response = await searchMovies(query);
+          setMovies(response.results);
+        } catch (error) {
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
+      }
+      fetchSearchMovies();
     }
+  }, [query]);
 
-  };
-  const location = useLocation();
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const form = event.target;
+  const topic = form.elements.topic.value.trim();
+  if (topic) {
+    setSearchParams({ query: topic });
+  }
+};
   return (
     <div>
-      <Formik
-        initialValues={{ topic: "" }}
-        onSubmit={(values, actions) => {
-          handleSearch(values.topic);
-          actions.resetForm();
-        }}
-      >
-        <Form>
-          <Field type="text" name="topic" />
-          <button type="submit">Search</button>
-        </Form>
-      </Formik>
+      <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="topic" />
+        <button type="submit">Search</button>
+      </form>
 
       {loading && <p>Loading...</p>}
       {error && <p>Error. Please try again.</p>}
-      <div>
-        {searchResult.length > 0 && (
-          <ul>
-            {searchResult.map((item) => {
-              const { id, title, name } = item;
-              return (
-                <li key={id}>
-                  <Link to={`/movies/${id}`} state={{ from: location }}>
-                    {title || name}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        )}
-        <Outlet />
-      </div>
+
+      <MovieList movies={movies} />
+      <Outlet />
+    </div>
     </div>
   );
 }
