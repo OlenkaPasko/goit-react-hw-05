@@ -1,9 +1,15 @@
-.list {
+.movieList {
+    padding: 15px;
+
+}
+.lists {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
-
+.list{
+    margin: 10px;
+}
 .link {
     display: block;
     text-decoration: none;

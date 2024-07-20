@@ -1,17 +1,3 @@
-.list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-.link {
-    display: block;
-    text-decoration: none;
-    color: black;
-}
-.link:hover {
-    color: blue;
-}
-
-.active {
-    color: royalblue;
+.trending{
+    padding: 15px;
 }

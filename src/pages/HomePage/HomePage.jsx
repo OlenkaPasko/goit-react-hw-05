@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTrending } from "../../api";
+import css from "./HomePage.module.css"
 
 import MovieList from "../../components/MovieList/MovieList";
 
@@ -18,7 +19,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Trending today</h1>
+      <h1 className={css.trending}>Trending today</h1>
       <MovieList movies={trendingMovies} />
     </div>
   );

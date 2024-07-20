@@ -1,0 +1,44 @@
+.container {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+;
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    background-color: white;
+}
+
+.button:hover {
+
+    background-color: blue;
+    border-radius: 2px;
+}
+
+.cardMovie {
+    display: flex;
+    padding: 10px 10px;
+
+}
+
+.textMovie {
+    display: grid;
+    padding: 10px 10px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px,
+        rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px;
+}
+
+.infoMovie {
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px,
+        rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px;
+}

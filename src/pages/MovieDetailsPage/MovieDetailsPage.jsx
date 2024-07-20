@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState } from "react";
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, NavLink,Link, Outlet } from "react-router-dom";
 import { getMovieDetails } from "../../api";
+import css from "./MovieDetalisPage.module.css"
 
 export default function MoviDetailsPage() {
   const { movieId } = useParams();
@@ -48,25 +49,25 @@ export default function MoviDetailsPage() {
   } = details;
 
   return (
-    <div>
-      <div>
-        <Link to={location.state?.from ?? "/"}>
-          <button>Go back</button>
-        </Link>
+    <div className={css.container}>
+      <button type="button" className={css.button}>
+        <Link to={location.state?.from ?? "/"}>Go back</Link>
+      </button>
+      <div className={css.cardMovie}>
         {poster_path ? (
           <img
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
             alt={name || title}
-            width="120px"
+            width="220px"
           />
         ) : (
           <img
             src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000"
             alt="404"
-            width="120px"
+            width="220px"
           />
         )}
-        <div>
+        <div className={css.textMovie}>
           <h1>
             {title || name} &#40;
             {release_date ? new Date(release_date).getFullYear() : "N/A"}&#41;
@@ -83,15 +84,17 @@ export default function MoviDetailsPage() {
           </p>
         </div>
       </div>
-      <p>Additional Information</p>
-      <ul>
-        <li>
-          <Link to={`cast`}>Cast</Link>
-        </li>
-        <li>
-          <Link to={`reviews`}>Reviews</Link>
-        </li>
-      </ul>
+      <div className={css.infoMovie}>
+        <p>Additional Information</p>
+        <ul>
+          <li>
+            <Link to={`cast`}>Cast</Link>
+          </li>
+          <li>
+            <Link to={`reviews`}>Reviews</Link>
+          </li>
+        </ul>
+      </div>
       <Suspense>
         <Outlet />
       </Suspense>

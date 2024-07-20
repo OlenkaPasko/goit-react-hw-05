@@ -10,7 +10,8 @@ const makeNavLinkClass = ({ isActive }) => {
 
 export default function Navigation() {
   return (
-    <header>
+    <div className={css.container}>
+    <header className={css.header}>
       <nav className={css.nav}>
         <NavLink to="/" className={makeNavLinkClass}>
           Home
@@ -19,6 +20,6 @@ export default function Navigation() {
           Movies
         </NavLink>
       </nav>
-    </header>
+    </header></div>
   );
 }

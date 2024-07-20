@@ -7,14 +7,16 @@ const makeNavLinkClass = ({ isActive }) => {
 };
 export default function MovieList({ movies }) {
   return (
-      <ul className={css.list}>
+    <div className={css.movieList}>
+      <ul className={css.lists}>
         {movies.map((movie) => (
-          <li key={movie.id}>
+          <li className={css.list} key={movie.id}>
             <NavLink to={`/movies/${movie.id}`} className={makeNavLinkClass}>
               {movie.title || movie.name}
             </NavLink>
           </li>
         ))}
       </ul>
+    </div>
   );
 }
