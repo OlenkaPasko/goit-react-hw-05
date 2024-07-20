@@ -11,7 +11,7 @@ export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get("query") || "";
-  
+
   useEffect(() => {
     if (query) {
       async function fetchSearchMovies() {
@@ -30,28 +30,28 @@ export default function MoviesPage() {
     }
   }, [query]);
 
-const handleSubmit = (event) => {
-  event.preventDefault();
-  const form = event.target;
-  const topic = form.elements.topic.value.trim();
-  if (topic) {
-    setSearchParams({ query: topic });
-  }
-};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const topic = form.elements.topic.value.trim();
+    if (topic) {
+      setSearchParams({ query: topic });
+    }
+  };
   return (
     <div>
       <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="topic" />
-        <button type="submit">Search</button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="topic" />
+          <button type="submit">Search</button>
+        </form>
 
-      {loading && <p>Loading...</p>}
-      {error && <p>Error. Please try again.</p>}
+        {loading && <p>Loading...</p>}
+        {error && <p>Error. Please try again.</p>}
 
-      <MovieList movies={movies} />
-      <Outlet />
-    </div>
+        <MovieList movies={movies} />
+        <Outlet />
+      </div>
     </div>
   );
 }
