@@ -1,9 +1,11 @@
-import { Suspense, useEffect, useState } from "react";
-import { useParams, NavLink,Link, Outlet } from "react-router-dom";
+import { Suspense, useEffect, useState, useRef } from "react";
+import { useParams,Link,useLocation, Outlet } from "react-router-dom";
 import { getMovieDetails } from "../../api";
 import css from "./MovieDetalisPage.module.css"
 
 export default function MoviDetailsPage() {
+  const location = useLocation();
+  const locationRef = useRef(location);
   const { movieId } = useParams();
 
   const [details, setDetails] = useState(null);
@@ -51,7 +53,7 @@ export default function MoviDetailsPage() {
   return (
     <div className={css.container}>
       <button type="button" className={css.button}>
-        <Link to={location.state?.from ?? "/"}>Go back</Link>
+        <Link to={locationRef.current.state?.from ?? "/"}>Go back</Link>
       </button>
       <div className={css.cardMovie}>
         {poster_path ? (
